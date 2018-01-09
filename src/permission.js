@@ -10,6 +10,10 @@ router.beforeEach((to, from, next) => {
   if (getToken()) {
     if (to.path === '/login') {
       next({ path: '/' })
+    } else if (to.path.startsWith('/old')) { // 已old开始的跳往老系统
+      var meum = to.path.replace('/old/', '') // 获取老系统的meum
+      window.location.href = process.env.BASE_API + '?accessToken=' + getToken() + '&meum=' + meum
+      return
     } else {
       if (store.getters.roles.length === 0) {
         store.dispatch('GetInfo').then(res => {

@@ -55,5 +55,14 @@ export const asyncRouterMap = [
     children: [{ path: 'index', name: 'Table', component: _import('table/index'), meta: { role: ['admin'] }}]
   },
 
+  {
+    path: '/old', // 已old开始的跳往老系统
+    component: Layout,
+    redirect: '/old/userManage', // 老系统的meum=userManage
+    icon: 'tubiao',
+    noDropdown: true,
+    children: [{ path: 'userManage', name: 'userManage', meta: { role: ['editor'] }}]
+  },
+
   { path: '*', redirect: '/404', hidden: true }
 ]
