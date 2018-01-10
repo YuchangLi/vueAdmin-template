@@ -8,7 +8,7 @@ import Layout from '../views/layout/Layout'
 
 Vue.use(Router)
 
- /**
+/**
   * icon : the icon show in the sidebar
   * hidden : if `hidden:true` will not show in the sidebar
   * redirect : if `redirect:noredirect` will not redirct in the levelbar
@@ -61,7 +61,15 @@ export const asyncRouterMap = [
     redirect: '/old/userManage', // 老系统的meum=userManage
     icon: 'tubiao',
     noDropdown: true,
-    children: [{ path: 'userManage', name: 'userManage', meta: { role: ['editor'] }}]
+    children: [{ path: 'userManage', name: '用户管理', meta: { role: ['editor'] }}]
+  },
+  {
+    path: '/old', // 已old开始的跳往老系统
+    component: Layout,
+    redirect: '/old/tenderManage', // 老系统的meum=userManage
+    icon: 'tubiao',
+    noDropdown: true,
+    children: [{ path: 'tenderManage', name: '标的管理', meta: { role: ['editor'] }}]
   },
 
   { path: '*', redirect: '/404', hidden: true }
